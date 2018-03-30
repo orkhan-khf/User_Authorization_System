@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="User_Authorizatoin_System_DbModelStoreContainer" CdmEntityContainer="User_Authorizatoin_System_DbEntities">
+    <EntitySetMapping Name="Permission_Table">
+      <EntityTypeMapping TypeName="User_Authorizatoin_System_DbModel.Permission_Table">
+        <MappingFragment StoreEntitySet="Permission_Table">
+          <ScalarProperty Name="permission_id" ColumnName="permission_id" />
+          <ScalarProperty Name="permission_controller" ColumnName="permission_controller" />
+          <ScalarProperty Name="permission_action" ColumnName="permission_action" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pivot_P_R_Table">
+      <EntityTypeMapping TypeName="User_Authorizatoin_System_DbModel.Pivot_P_R_Table">
+        <MappingFragment StoreEntitySet="Pivot_P_R_Table">
+          <ScalarProperty Name="ppr_id" ColumnName="ppr_id" />
+          <ScalarProperty Name="ppr_permission_id" ColumnName="ppr_permission_id" />
+          <ScalarProperty Name="ppr_role_id" ColumnName="ppr_role_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pivot_R_U_Table">
+      <EntityTypeMapping TypeName="User_Authorizatoin_System_DbModel.Pivot_R_U_Table">
+        <MappingFragment StoreEntitySet="Pivot_R_U_Table">
+          <ScalarProperty Name="pru_id" ColumnName="pru_id" />
+          <ScalarProperty Name="pru_user_id" ColumnName="pru_user_id" />
+          <ScalarProperty Name="pru_role_id" ColumnName="pru_role_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role_Table">
+      <EntityTypeMapping TypeName="User_Authorizatoin_System_DbModel.Role_Table">
+        <MappingFragment StoreEntitySet="Role_Table">
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="role_name" ColumnName="role_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Table">
+      <EntityTypeMapping TypeName="User_Authorizatoin_System_DbModel.User_Table">
+        <MappingFragment StoreEntitySet="User_Table">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="user_username" ColumnName="user_username" />
+          <ScalarProperty Name="user_password" ColumnName="user_password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

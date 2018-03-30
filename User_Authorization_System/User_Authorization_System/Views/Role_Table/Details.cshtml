@@ -1,0 +1,27 @@
+﻿@model User_Authorization_System.Models.Role_Table
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Role_Table</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.role_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.role_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.role_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

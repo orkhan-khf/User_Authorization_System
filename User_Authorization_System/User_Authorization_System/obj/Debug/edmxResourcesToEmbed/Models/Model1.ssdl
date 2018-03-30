@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="User_Authorizatoin_System_DbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Permission_Table">
+    <Key>
+      <PropertyRef Name="permission_id" />
+    </Key>
+    <Property Name="permission_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="permission_controller" Type="nvarchar" MaxLength="50" />
+    <Property Name="permission_action" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Pivot_P_R_Table">
+    <Key>
+      <PropertyRef Name="ppr_id" />
+    </Key>
+    <Property Name="ppr_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ppr_permission_id" Type="int" />
+    <Property Name="ppr_role_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Pivot_R_U_Table">
+    <Key>
+      <PropertyRef Name="pru_id" />
+    </Key>
+    <Property Name="pru_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="pru_user_id" Type="int" Nullable="false" />
+    <Property Name="pru_role_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role_Table">
+    <Key>
+      <PropertyRef Name="role_id" />
+    </Key>
+    <Property Name="role_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="role_name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="User_Table">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_username" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Pivot_P_R_Table_Permission_Table">
+    <End Role="Permission_Table" Type="Self.Permission_Table" Multiplicity="0..1" />
+    <End Role="Pivot_P_R_Table" Type="Self.Pivot_P_R_Table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permission_Table">
+        <PropertyRef Name="permission_id" />
+      </Principal>
+      <Dependent Role="Pivot_P_R_Table">
+        <PropertyRef Name="ppr_permission_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pivot_P_R_Table_Role_Table">
+    <End Role="Role_Table" Type="Self.Role_Table" Multiplicity="0..1" />
+    <End Role="Pivot_P_R_Table" Type="Self.Pivot_P_R_Table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role_Table">
+        <PropertyRef Name="role_id" />
+      </Principal>
+      <Dependent Role="Pivot_P_R_Table">
+        <PropertyRef Name="ppr_role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pivot_R_U_Table_Role_Table">
+    <End Role="Role_Table" Type="Self.Role_Table" Multiplicity="1" />
+    <End Role="Pivot_R_U_Table" Type="Self.Pivot_R_U_Table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role_Table">
+        <PropertyRef Name="role_id" />
+      </Principal>
+      <Dependent Role="Pivot_R_U_Table">
+        <PropertyRef Name="pru_role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pivot_R_U_Table_User_Table">
+    <End Role="User_Table" Type="Self.User_Table" Multiplicity="1" />
+    <End Role="Pivot_R_U_Table" Type="Self.Pivot_R_U_Table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Table">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="Pivot_R_U_Table">
+        <PropertyRef Name="pru_user_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="User_Authorizatoin_System_DbModelStoreContainer">
+    <EntitySet Name="Permission_Table" EntityType="Self.Permission_Table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pivot_P_R_Table" EntityType="Self.Pivot_P_R_Table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pivot_R_U_Table" EntityType="Self.Pivot_R_U_Table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role_Table" EntityType="Self.Role_Table" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Table" EntityType="Self.User_Table" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Pivot_P_R_Table_Permission_Table" Association="Self.FK_Pivot_P_R_Table_Permission_Table">
+      <End Role="Permission_Table" EntitySet="Permission_Table" />
+      <End Role="Pivot_P_R_Table" EntitySet="Pivot_P_R_Table" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pivot_P_R_Table_Role_Table" Association="Self.FK_Pivot_P_R_Table_Role_Table">
+      <End Role="Role_Table" EntitySet="Role_Table" />
+      <End Role="Pivot_P_R_Table" EntitySet="Pivot_P_R_Table" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pivot_R_U_Table_Role_Table" Association="Self.FK_Pivot_R_U_Table_Role_Table">
+      <End Role="Role_Table" EntitySet="Role_Table" />
+      <End Role="Pivot_R_U_Table" EntitySet="Pivot_R_U_Table" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pivot_R_U_Table_User_Table" Association="Self.FK_Pivot_R_U_Table_User_Table">
+      <End Role="User_Table" EntitySet="User_Table" />
+      <End Role="Pivot_R_U_Table" EntitySet="Pivot_R_U_Table" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8ff6d4d78fc6472eb4dac9c0a96d08aa" Name="Diagram1">
+        <EntityTypeShape EntityType="User_Authorizatoin_System_DbModel.Permission_Table" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="User_Authorizatoin_System_DbModel.Pivot_P_R_Table" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="User_Authorizatoin_System_DbModel.Pivot_R_U_Table" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="User_Authorizatoin_System_DbModel.Role_Table" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="User_Authorizatoin_System_DbModel.User_Table" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="User_Authorizatoin_System_DbModel.FK_Pivot_P_R_Table_Permission_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="User_Authorizatoin_System_DbModel.FK_Pivot_P_R_Table_Role_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="User_Authorizatoin_System_DbModel.FK_Pivot_R_U_Table_Role_Table" ManuallyRouted="false" />
+        <AssociationConnector Association="User_Authorizatoin_System_DbModel.FK_Pivot_R_U_Table_User_Table" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

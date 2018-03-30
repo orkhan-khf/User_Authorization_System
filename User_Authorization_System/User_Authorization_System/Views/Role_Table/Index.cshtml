@@ -1,0 +1,34 @@
+﻿@model IEnumerable<User_Authorization_System.Models.Role_Table>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.role_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.role_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.role_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.role_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.role_id })
+        </td>
+    </tr>
+}
+
+</table>
